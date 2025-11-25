@@ -1,0 +1,63 @@
+# .github/workflows/deploy.yml
+name: Despliegue en GitHub Pages
+
+# Dispara la acción en cada push a la rama 'main'
+on:
+  push:
+    branches:
+      - main
+  # Permite ejecutar manualmente el flujo de trabajo desde la pestaña Actions
+  workflow_dispatch:
+
+# Permite que la acción tenga permisos para escribir en el repositorio (necesario para desplegar)
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Definición de los trabajos a realizar
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout: Clona tu repositorio en el servidor de GitHub Actions
+      - uses: actions/checkout@v4
+
+      # 2. Setup Node: Configura el entorno de Node.js
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # O la versión que estés usando
+
+      # 3. Cache: Usa el caché para que las dependencias se instalen más rápido
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # 4. Install Dependencies: Instala los paquetes de Node
+      - name: Install dependencies
+        run: npm install
+
+      # 5. Build: Ejecuta el comando de compilación de Vite, creando la carpeta 'dist'
+      - name: Build project
+        run: npm run build
+
+      # 6. Setup Pages: Configura el entorno para el despliegue de GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # 7. Upload Artifact: Sube la carpeta 'dist' como un artefacto de despliegue
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Directorio a subir (la salida del comando 'npm run build')
+          path: './dist'
+
+      # 8. Deploy: Despliega el artefacto a GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
