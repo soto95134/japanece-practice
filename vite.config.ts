@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
-base: '/japones-practica/', 
+  // ¡DEBE ser el nombre exacto de tu repositorio, rodeado de barras!
+  base: '/japanese-practice/', 
   plugins: [react()],
 })
