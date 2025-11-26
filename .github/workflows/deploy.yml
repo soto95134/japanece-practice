@@ -44,7 +44,8 @@ jobs:
 
       # 5. Build: Ejecuta el comando de compilación de Vite, creando la carpeta 'dist'
       - name: Build project
-        run: npm run build
+        # Si usas esta línea, asegúrate de que la ruta sea correcta
+        run: npm run build -- --base=/japanece-practice/
 
       # 6. Setup Pages: Configura el entorno para el despliegue de GitHub Pages
       - name: Setup Pages
