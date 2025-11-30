@@ -93,26 +93,35 @@ const KanaPractice = ({ onUpdateCount }: KanaPracticeProps) => {
     };
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value.toLowerCase();
+        const value = event.target.value;
         setUserInput(value);
         if (!currentKana || !isPracticing) return;
 
-        if (value === currentKana.romanji) {
+        // Verificar si la entrada coincide con el kana o con el romaji
+        const isKanaMatch = value === currentKana.kana;
+        const isRomajiMatch = value.toLowerCase() === currentKana.romanji;
+        
+        if (isKanaMatch || isRomajiMatch) {
             setMessage('✅ ¡Correcto!');
             setFeedbackState('correct');
             setCorrectCount(prev => prev + 1);
             setRemainingKanas(prev => prev - 1);
+            setIsInputDisabled(true);
             setTimeout(selectRandomKana, 500);
-        } else if (currentKana.romanji.startsWith(value)) {
+        } else if (
+            currentKana.romanji.startsWith(value.toLowerCase()) || 
+            currentKana.kana.startsWith(value)
+        ) {
+            // Si la entrada es un prefijo válido de cualquiera de los dos formatos
             setMessage('...');
             setFeedbackState('typing');
-        } else if (value.length >= currentKana.romanji.length) {
-            // Solo mostrar error si se ha escrito la misma cantidad de caracteres
-            setMessage(`❌ Correcto: ${currentKana.romanji}`);
+        } else if (value.length > 0) {
+            // Mostrar error solo si hay contenido en el input
+            setMessage(`❌ Correcto: ${currentKana.romanji} (${currentKana.kana})`);
             setFeedbackState('incorrect');
             setIncorrectCount(prev => prev + 1);
             setRemainingKanas(prev => prev - 1);
-            setIsInputDisabled(true); // Deshabilitar el input al fallar
+            setIsInputDisabled(true);
             setTimeout(selectRandomKana, 1500);
         } else {
             setMessage('...');
@@ -199,7 +208,7 @@ const KanaPractice = ({ onUpdateCount }: KanaPracticeProps) => {
                 </div>
             ) : (
                 <div className="kana-quiz-section">
-                    <h1 className="main-title">Quiz</h1>
+                    <h1 className="main-title">Romanji</h1>
                     <div className="progress-stats">
                         <span className="stat correct">✅ {correctCount}</span>
                         <span className="stat incorrect">❌ {incorrectCount}</span>
@@ -238,6 +247,16 @@ const KanaPractice = ({ onUpdateCount }: KanaPracticeProps) => {
 // 2. PLACEHOLDER COMPONENTS
 // =================================================================
 
+const NumberPractice = () => (
+    <div className="placeholder-container">
+        <h1 className="main-title">Numeros (数字)</h1>
+        <div className="under-development">
+            <p className="dev-title">🚧 En Desarrollo</p>
+            <p>Pronto podrás practicar numeros aquí.</p>
+        </div>
+    </div>
+);
+
 const KanjiPractice = () => (
     <div className="placeholder-container">
         <h1 className="main-title">Kanji (漢字)</h1>
@@ -271,6 +290,12 @@ function App() {
                 >
                     Kana
                 </button>
+                 <button
+                    className={`nav-button ${activeTab === 'numbers' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('numbers')}
+                >
+                    Numeros
+                </button>
                 <button
                     className={`nav-button ${activeTab === 'kanji' ? 'active' : ''}`}
                     onClick={() => setActiveTab('kanji')}
@@ -287,6 +312,7 @@ function App() {
 
             <main className="main-content">
                 {activeTab === 'kana' && <KanaPractice onUpdateCount={setKanaCount} />}
+                {activeTab === 'numbers' && <NumberPractice />}
                 {activeTab === 'kanji' && <KanjiPractice />}
                 {activeTab === 'words' && <WordsPractice />}
             </main>
