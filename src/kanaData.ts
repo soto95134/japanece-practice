@@ -55,52 +55,25 @@ export const hiragana: KanaCharacter[] = [
 // ----------------------------------------------------------------
 
 export const katakana: KanaCharacter[] = [
-  // Gojūon (Vocales y Filas K, S, T, N, H, M, Y, R, W)
-  { kana: 'ア', romanji: 'a' }, { kana: 'イ', romanji: 'i' }, { kana: 'ウ', romanji: 'u' }, { kana: 'エ', romanji: 'e' }, { kana: 'オ', romanji: 'o' },
+  { kana: 'ア', romanji: 'a' }, { kana: 'イ', romanji: 'i' }, { kana: 'ウ', romanji: 'u' },
+  { kana: 'エ', romanji: 'e' }, { kana: 'オ', romanji: 'o' },
   { kana: 'カ', romanji: 'ka' }, { kana: 'キ', romanji: 'ki' }, { kana: 'ク', romanji: 'ku' }, { kana: 'ケ', romanji: 'ke' }, { kana: 'コ', romanji: 'ko' },
   { kana: 'サ', romanji: 'sa' }, { kana: 'シ', romanji: 'shi' }, { kana: 'ス', romanji: 'su' }, { kana: 'セ', romanji: 'se' }, { kana: 'ソ', romanji: 'so' },
   { kana: 'タ', romanji: 'ta' }, { kana: 'チ', romanji: 'chi' }, { kana: 'ツ', romanji: 'tsu' }, { kana: 'テ', romanji: 'te' }, { kana: 'ト', romanji: 'to' },
   { kana: 'ナ', romanji: 'na' }, { kana: 'ニ', romanji: 'ni' }, { kana: 'ヌ', romanji: 'nu' }, { kana: 'ネ', romanji: 'ne' }, { kana: 'ノ', romanji: 'no' },
   { kana: 'ハ', romanji: 'ha' }, { kana: 'ヒ', romanji: 'hi' }, { kana: 'フ', romanji: 'fu' }, { kana: 'ヘ', romanji: 'he' }, { kana: 'ホ', romanji: 'ho' },
   { kana: 'マ', romanji: 'ma' }, { kana: 'ミ', romanji: 'mi' }, { kana: 'ム', romanji: 'mu' }, { kana: 'メ', romanji: 'me' }, { kana: 'モ', romanji: 'mo' },
-  { kana: 'ヤ', romanji: 'ya' }, /* y i */ { kana: 'ユ', romanji: 'yu' }, /* y e */ { kana: 'ヨ', romanji: 'yo' },
+  { kana: 'ヤ', romanji: 'ya' }, { kana: 'ユ', romanji: 'yu' }, { kana: 'ヨ', romanji: 'yo' },
   { kana: 'ラ', romanji: 'ra' }, { kana: 'リ', romanji: 'ri' }, { kana: 'ル', romanji: 'ru' }, { kana: 'レ', romanji: 're' }, { kana: 'ロ', romanji: 'ro' },
-  { kana: 'ワ', romanji: 'wa' }, /* w i */ /* w u */ /* w e */ { kana: 'ヲ', romanji: 'wo' },
-
-  // El carácter 'N'
-  { kana: 'ン', romanji: 'n' },
-
-  // Dakuon (sonidos g, z, d, b)
-  { kana: 'ガ', romanji: 'ga' }, { kana: 'ギ', romanji: 'gi' }, { kana: 'グ', romanji: 'gu' }, { kana: 'ゲ', romanji: 'ge' }, { kana: 'ゴ', romanji: 'go' },
-  { kana: 'ザ', romanji: 'za' }, { kana: 'ジ', romanji: 'ji' }, { kana: 'ズ', romanji: 'zu' }, { kana: 'ゼ', romanji: 'ze' }, { kana: 'ゾ', romanji: 'zo' },
-  { kana: 'ダ', romanji: 'da' }, { kana: 'ヂ', romanji: 'ji' }, { kana: 'ヅ', romanji: 'zu' }, { kana: 'デ', romanji: 'de' }, { kana: 'ド', romanji: 'do' },
-  { kana: 'バ', romanji: 'ba' }, { kana: 'ビ', romanji: 'bi' }, { kana: 'ブ', romanji: 'bu' }, { kana: 'ベ', romanji: 'be' }, { kana: 'ボ', romanji: 'bo' },
-
-  // Handakuon (sonidos p)
-  { kana: 'パ', romanji: 'pa' }, { kana: 'ピ', romanji: 'pi' }, { kana: 'プ', romanji: 'pu' }, { kana: 'ペ', romanji: 'pe' }, { kana: 'ポ', romanji: 'po' },
-
-  // Yōon (Dígrafos)
-  { kana: 'キャ', romanji: 'kya' }, { kana: 'キュ', romanji: 'kyu' }, { kana: 'キョ', romanji: 'kyo' },
-  { kana: 'ギャ', romanji: 'gya' }, { kana: 'ギュ', romanji: 'gyu' }, { kana: 'ギョ', romanji: 'gyo' },
-  { kana: 'シャ', romanji: 'sha' }, { kana: 'シュ', romanji: 'shu' }, { kana: 'ショ', romanji: 'sho' },
-  { kana: 'ジャ', romanji: 'ja' }, { kana: 'ジュ', romanji: 'ju' }, { kana: 'ジョ', romanji: 'jo' },
-  { kana: 'チャ', romanji: 'cha' }, { kana: 'チュ', romanji: 'chu' }, { kana: 'チョ', romanji: 'cho' },
-  { kana: 'ニャ', romanji: 'nya' }, { kana: 'ニュ', romanji: 'nyu' }, { kana: 'ニョ', romanji: 'nyo' },
-  { kana: 'ヒャ', romanji: 'hya' }, { kana: 'ヒュ', romanji: 'hyu' }, { kana: 'ヒョ', romanji: 'hyo' },
-  { kana: 'ビャ', romanji: 'bya' }, { kana: 'ビュ', romanji: 'byu' }, { kana: 'ビョ', romanji: 'byo' },
-  { kana: 'ピャ', romanji: 'pya' }, { kana: 'ピュ', romanji: 'pyu' }, { kana: 'ピョ', romanji: 'pyo' },
-  { kana: 'ミャ', romanji: 'mya' }, { kana: 'ミュ', romanji: 'myu' }, { kana: 'ミョ', romanji: 'myo' },
-  { kana: 'リャ', romanji: 'rya' }, { kana: 'リュ', romanji: 'ryu' }, { kana: 'リョ', romanji: 'ryo' },
-  
-  // 🆕 Caracteres de sonido compuesto (usados principalmente para palabras extranjeras, p. ej., "fa", "ti", "che")
+  { kana: 'ワ', romanji: 'wa' }, { kana: 'ヲ', romanji: 'wo' }, { kana: 'ン', romanji: 'n' },
   { kana: 'ヴァ', romanji: 'va' }, { kana: 'ヴィ', romanji: 'vi' }, { kana: 'ヴ', romanji: 'vu' }, { kana: 'ヴェ', romanji: 've' }, { kana: 'ヴォ', romanji: 'vo' },
-  { kana: 'ファ', romanji: 'fa' }, { kana: 'フィ', romanji: 'fi' }, /* f u */ { kana: 'フェ', romanji: 'fe' }, { kana: 'フォ', romanji: 'fo' },
+  { kana: 'ファ', romanji: 'fa' }, { kana: 'フィ', romanji: 'fi' }, { kana: 'フェ', romanji: 'fe' }, { kana: 'フォ', romanji: 'fo' },
   { kana: 'チェ', romanji: 'che' },
   { kana: 'ティ', romanji: 'ti' }, { kana: 'トゥ', romanji: 'tu' },
   { kana: 'ディ', romanji: 'di' }, { kana: 'ドゥ', romanji: 'du' },
   { kana: 'シェ', romanji: 'she' },
   { kana: 'ジェ', romanji: 'je' },
-  { kana: 'ツァ', romanji: 'tsa' }, { kana: 'ツィ', romanji: 'tsi' }, { kana: 'ツェ', romanji: 'tse' }, { kana: 'ツォ', romanji: 'tso' },
+  { kana: 'ツァ', romanji: 'tsa' }, { kana: 'ツィ', romanji: 'tsi' }, { kana: 'ツェ', romanji: 'tse' }, { kana: 'ツォ', romanji: 'tso' }
 ];
 
 // Opcional: Lista combinada (si la estás usando en App.tsx)
