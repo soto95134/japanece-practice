@@ -23,7 +23,6 @@ const KanaPractice = ({ onUpdateCount }: KanaPracticeProps) => {
     const [currentKana, setCurrentKana] = useState<KanaCharacter | null>(null);
     const [message, setMessage] = useState<string>('Presiona "Comenzar" para iniciar.');
     const [feedbackState, setFeedbackState] = useState<FeedbackState>('default');
-    const [isHintVisible, setIsHintVisible] = useState<boolean>(false);
     const [isPracticing, setIsPracticing] = useState<boolean>(false);
     const [selectedHiragana, setSelectedHiragana] = useState<string[]>(hiragana.map(k => k.kana));
     const [selectedKatakana, setSelectedKatakana] = useState<string[]>([]);
@@ -78,7 +77,6 @@ const KanaPractice = ({ onUpdateCount }: KanaPracticeProps) => {
             setMessage(`🎉 ¡Sesión completada! Aciertos: ${correctCount}, Fallos: ${incorrectCount}`);
             setUserInput('');
             setFeedbackState('default');
-            setIsHintVisible(false);
             setIsPracticing(false);
             return;
         }
@@ -87,7 +85,6 @@ const KanaPractice = ({ onUpdateCount }: KanaPracticeProps) => {
         setUserInput('');
         setMessage('Escribe el Romanji...');
         setFeedbackState('default');
-        setIsHintVisible(false);
     }, [practiceList, isPracticing]);
 
     useEffect(() => {
@@ -160,10 +157,6 @@ const KanaPractice = ({ onUpdateCount }: KanaPracticeProps) => {
             setFeedbackState('typing');
         }
     };
-
-    const toggleHintVisibility = useCallback(() => {
-        setIsHintVisible(prev => !prev);
-    }, []);
 
     const toggleKanaSelection = useCallback((kana: string, type: 'h' | 'k') => {
         if (type === 'h') {
